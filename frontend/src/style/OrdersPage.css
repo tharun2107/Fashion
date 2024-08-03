@@ -1,0 +1,70 @@
+/* OrdersPage.css */
+
+.orders-page {
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orders-page h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.order {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.order h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.order-product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.order-product img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.order-product h4 {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+    flex: 1;
+}
+
+.order-product p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+.order p {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.order p.total-price {
+    font-weight: bold;
+    color: #000;
+}

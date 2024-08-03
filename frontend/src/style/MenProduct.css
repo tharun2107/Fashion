@@ -1,0 +1,99 @@
+/* MenProducts.css */
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.men-products {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.men-products h1 {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #212529;
+    text-align: center;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.category-filter, .price-filter {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category-filter button,
+.price-filter button {
+    background-color: rgba(0, 0, 255, 0.619);
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.category-filter button:hover,
+.price-filter button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    margin: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.product-card h2 {
+    font-size: 1.5em;
+    margin: 20px 20px 10px 20px;
+    color: #212529;
+}
+
+.product-card p {
+    color: #868e96;
+    margin: 0 20px 10px 20px;
+}
+
+.price {
+    font-weight: bold;
+    color: #007bff;
+    margin: 10px 20px 20px 20px;
+}
