@@ -5,6 +5,7 @@ import App from './App';
 import { UserProvider } from './context/UserContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
+import './style/index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

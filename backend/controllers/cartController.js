@@ -66,6 +66,7 @@ const addToCart = async (req, res) => {
     }
 };
 
+
 const removeFromCart = async (req, res) => {
     const { id } = req.params;
 

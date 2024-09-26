@@ -1,4 +1,4 @@
-/* Navbar.css */
+/* Navbar.css
 
 .navbar {
     display: flex;
@@ -88,5 +88,90 @@
 
     .navbar-links.active {
         display: flex;
+    }
+} */
+.navbar {
+    background-color: #2d3748; /* Dark gray */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    align-items: center; /* Center items vertically */
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links a, .navbar-links button {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover, .navbar-links button:hover {
+    background-color: #4a5568;
+    border-radius: 5px; /* Optional: Add slight rounding for a softer look */
+}
+
+/* Responsive Styles */
+@media (max-width: 640px) {
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #2d3748;
+        z-index: 20;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .navbar-links a, .navbar-links button {
+        padding: 1rem;
+        text-align: center;
+    }
+}
+
+@media (min-width: 641px) {
+    .navbar-links {
+        display: flex;
+    }
+
+    .navbar-toggle {
+        display: none;
     }
 }

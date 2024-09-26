@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
-import '../style/Navbar.css';
-import ProfilePage from '../pages/ProfilePage'; // Importing ProfilePage component
+import ProfilePage from '../pages/ProfilePage';
+import '../style/Navbar.css'; // Importing the external CSS file
 
 function Navbar() {
     const { user, logout } = useUserContext();
@@ -22,18 +22,27 @@ function Navbar() {
             <div className="navbar-logo">
                 <Link to="/">StyleSphere</Link>
             </div>
-            <button className="navbar-toggle" onClick={toggleMenu}>
-                &#9776;
+            <button 
+                className="navbar-toggle" 
+                onClick={toggleMenu}
+            >
+                &#9776; {/* Hamburger icon */}
             </button>
             <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
                 <li><Link to="/">Home</Link></li>
-              
                 <li><Link to="/mensfashion">Men</Link></li>
-             
+                {/* <li><Link to="/wishlist">Wishlist</Link></li> */}
+                <li><Link to="/cart">Cart</Link></li>
+                <li><Link to="/orders">Orders</Link></li>
+
                 {user ? (
                     <>
-                        <li><button className="profile-button" onClick={toggleProfile}>Profile</button></li>
-                        <li><button className="logout-button" onClick={logout}>Logout</button></li>
+                        <li>
+                            <button className="profile-button" onClick={toggleProfile}>Profile</button>
+                        </li>
+                        <li>
+                            <button className="logout-button" onClick={logout}>Logout</button>
+                        </li>
                     </>
                 ) : (
                     <>
@@ -41,11 +50,8 @@ function Navbar() {
                         <li><Link to="/register">Register</Link></li>
                     </>
                 )}
-                   <li><Link to="/wishlist">Wishlist</Link></li>
-                <li><Link to="/cart">Cart</Link></li>
-                <li><Link to="/orders">Orders</Link></li>
             </ul>
-            {isProfileOpen && <ProfilePage onClose={toggleProfile} />} {/* Render ProfilePage if isProfileOpen is true */}
+            {isProfileOpen && <ProfilePage onClose={toggleProfile} />}
         </nav>
     );
 }
