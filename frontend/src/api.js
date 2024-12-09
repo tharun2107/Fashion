@@ -1,5 +1,5 @@
 // api.js
-export const BASE_URL = 'http://localhost:5000/api';
+export const BASE_URL = 'https://fashion-nd7o.onrender.com/api';
 
 export const PRODUCT_URL = id => `${BASE_URL}/products/${id}`;
 export const RELATED_PRODUCTS_URL = id => `${BASE_URL}/products/related/${id}`;

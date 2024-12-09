@@ -11,7 +11,7 @@ function MenProducts() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const { data } = await axios.get('http://localhost:5000/api/products');
+                const { data } = await axios.get('https://fashion-nd7o.onrender.com/api/products');
                 setProducts(data);
                 setFilteredProducts(data);
             } catch (error) {

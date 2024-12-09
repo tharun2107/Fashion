@@ -9,7 +9,7 @@ function ProfilePage({ onClose }) {
 
     useEffect(() => {
         const fetchProfile = async () => {
-            const { data } = await axios.get('http://localhost:5000/api/users/profile', {
+            const { data } = await axios.get('https://fashion-nd7o.onrender.com/api/users/profile', {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },

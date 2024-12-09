@@ -18,7 +18,7 @@ const PaymentPage = () => {
     };
 
     const handlePayment = async () => {
-        const orderUrl = 'http://localhost:5000/api/payment/orders';
+        const orderUrl = 'https://fashion-nd7o.onrender.com/api/payment/orders';
         const { data } = await axios.post(orderUrl, { amount: amount, currency: 'INR' });
 
         const options = {
@@ -33,7 +33,7 @@ const PaymentPage = () => {
                 const orderId = response.razorpay_order_id;
                 const signature = response.razorpay_signature;
 
-                const verifyUrl = 'http://localhost:5000/api/payment/verify';
+                const verifyUrl = 'https://fashion-nd7o.onrender.com/api/payment/verify';
                 const { data } = await axios.post(verifyUrl, {
                     orderId,
                     paymentId,

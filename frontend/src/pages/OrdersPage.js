@@ -10,7 +10,7 @@ function OrdersPage() {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const { data } = await axios.get('http://localhost:5000/api/orders', {
+                const { data } = await axios.get('https://fashion-nd7o.onrender.com/api/orders', {
                     headers: {
                         Authorization: `Bearer ${user.token}`,
                     },

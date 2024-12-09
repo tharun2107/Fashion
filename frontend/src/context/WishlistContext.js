@@ -43,7 +43,7 @@ export const WishlistProvider = ({ children }) => {
         const fetchWishlist = async () => {
             try {
                 if (user && user.token) {
-                    const { data } = await axios.get('http://localhost:5000/api/wishlist', {
+                    const { data } = await axios.get('https://fashion-nd7o.onrender.com/api/wishlist', {
                         headers: {
                             Authorization: `Bearer ${user.token}`,
                         },
@@ -67,7 +67,7 @@ export const WishlistProvider = ({ children }) => {
             }
 
             const { data } = await axios.post(
-                'http://localhost:5000/api/wishlist',
+                'https://fashion-nd7o.onrender.com/api/wishlist',
                 { productId },
                 {
                     headers: {
@@ -94,7 +94,7 @@ export const WishlistProvider = ({ children }) => {
                 return;
             }
 
-            await axios.delete(`http://localhost:5000/api/wishlist/${productId}`, {
+            await axios.delete(`https://fashion-nd7o.onrender.com/api/wishlist/${productId}`, {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },

@@ -87,7 +87,7 @@ To set up the project locally, follow these steps:
 
 2. Navigate through the website to explore products or test the API by visiting:
    ```
-   http://localhost:5000/api/products
+   https://fashion-nd7o.onrender.com/api/products
    ```
 
 3. To add new products, make POST requests to `/api/products` with product details.

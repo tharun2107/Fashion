@@ -38,7 +38,7 @@ const AddProductPage = () => {
                 },
             };
     
-            await axios.post('http://localhost:5000/api/products', formData, config);
+            await axios.post('https://fashion-nd7o.onrender.com/api/products', formData, config);
             alert('Product added successfully');
             setFormData({
                 name: '',
@@ -62,7 +62,7 @@ const AddProductPage = () => {
                     Authorization: `Bearer ${token}`,
                 },
             };
-            const response = await axios.get('http://localhost:5000/api/products', config);
+            const response = await axios.get('https://fashion-nd7o.onrender.com/api/products', config);
             setProducts(response.data);
         } catch (error) {
             console.error('Failed to fetch products:', error);
@@ -86,7 +86,7 @@ const AddProductPage = () => {
                 },
             };
     
-            await axios.delete(`http://localhost:5000/api/products/${productId}`, config);
+            await axios.delete(`https://fashion-nd7o.onrender.com/api/products/${productId}`, config);
             alert('Product removed successfully');
             fetchProducts(); // Refresh product list
         } catch (error) {

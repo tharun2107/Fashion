@@ -17,7 +17,7 @@ function ProductPage() {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/api/products/${id}`);
+                const { data } = await axios.get(`https://fashion-nd7o.onrender.com/api/products/${id}`);
                 setProduct(data);
             } catch (error) {
                 console.error('Failed to fetch product', error);
@@ -26,7 +26,7 @@ function ProductPage() {
 
         const fetchRelatedProducts = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/api/products/related/${id}`);
+                const { data } = await axios.get(`https://fashion-nd7o.onrender.com/api/products/related/${id}`);
                 setRelatedProducts(data);
             } catch (error) {
                 console.error('Failed to fetch related products', error);
@@ -49,7 +49,7 @@ function ProductPage() {
                 return;
             }
 
-            await axios.post('http://localhost:5000/api/cart', { productId: product._id, quantity }, {
+            await axios.post('https://fashion-nd7o.onrender.com/api/cart', { productId: product._id, quantity }, {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },

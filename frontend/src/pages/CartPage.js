@@ -14,7 +14,7 @@ function CartPage() {
     useEffect(() => {
         const fetchCart = async () => {
             try {
-                const { data } = await axios.get('http://localhost:5000/api/cart', {
+                const { data } = await axios.get('https://fashion-nd7o.onrender.com/api/cart', {
                     headers: {
                         Authorization: `Bearer ${user.token}`,
                     },
@@ -29,7 +29,7 @@ function CartPage() {
 
     const removeFromCart = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/cart/${id}`, {
+            await axios.delete(`https://fashion-nd7o.onrender.com/api/cart/${id}`, {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },
@@ -45,7 +45,7 @@ function CartPage() {
 
     const saveQuantity = async (productId, quantity) => {
         try {
-            await axios.put('http://localhost:5000/api/cart', { productId, quantity }, {
+            await axios.put('https://fashion-nd7o.onrender.com/api/cart', { productId, quantity }, {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },
@@ -79,7 +79,7 @@ function CartPage() {
         try {
             const totalPrice = cart.products.reduce((total, product) => total + product.productId.price * product.quantity, 0);
     
-            const { data: order } = await axios.post('http://localhost:5000/api/payment/orders', {
+            const { data: order } = await axios.post('https://fashion-nd7o.onrender.com/api/payment/orders', {
                 amount: totalPrice,
                 currency: 'INR',  // Add currency to be explicit
             }, {
@@ -103,7 +103,7 @@ function CartPage() {
                 order_id: order.id,
                 handler: async function (response) {
                     try {
-                        const verifyResponse = await axios.post('http://localhost:5000/api/payment/verify', {
+                        const verifyResponse = await axios.post('https://fashion-nd7o.onrender.com/api/payment/verify', {
                             orderId: order.id,
                             paymentId: response.razorpay_payment_id,
                             signature: response.razorpay_signature,
@@ -115,7 +115,7 @@ function CartPage() {
     
                         console.log('Payment verification response:', verifyResponse.data);
     
-                        const orderResponse = await axios.post('http://localhost:5000/api/orders', {
+                        const orderResponse = await axios.post('https://fashion-nd7o.onrender.com/api/orders', {
                             products: cart.products.map(product => ({
                                 productId: product.productId._id,
                                 name: product.productId.name,
@@ -131,7 +131,7 @@ function CartPage() {
     
                         console.log('Order creation response:', orderResponse.data);
     
-                        await axios.delete('http://localhost:5000/api/cart', {
+                        await axios.delete('https://fashion-nd7o.onrender.com/api/cart', {
                             headers: {
                                 Authorization: `Bearer ${user.token}`,
                             },

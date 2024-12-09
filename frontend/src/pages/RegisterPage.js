@@ -13,7 +13,7 @@ function RegisterPage() {
     const register = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post('http://localhost:5000/api/users/register', { name, email, password });
+            const { data } = await axios.post('https://fashion-nd7o.onrender.com/api/users/register', { name, email, password });
             setUser(data);
             window.location.href = '/';
         } catch (error) {

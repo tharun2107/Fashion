@@ -28,7 +28,7 @@ const HomePage = () => {
         // Fetch products from the API
         const fetchProducts = async () => {
           try {
-            const { data } = await axios.get('http://localhost:5000/api/products');
+            const { data } = await axios.get('https://fashion-nd7o.onrender.com/api/products');
             // Display only the first 4 products
             setProducts(data.slice(0, 4));
           } catch (error) {
