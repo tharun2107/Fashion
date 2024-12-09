@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import { useUserContext } from './context/UserContext'; // Import user context
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProductPage from './pages/ProductPage';
@@ -12,14 +13,35 @@ import PaymentPage from './pages/PaymentPage';
 import OrdersPage from './pages/OrdersPage';
 import MenProducts from './pages/MenProducts';
 import WishlistPage from './pages/WishlistPage';
-
+import { Navigate } from 'react-router-dom';
 function App() {
+  const { user } = useUserContext(); // Get user context
+
+  const ProtectedAdminRoute = ({ children }) => {
+      if (!user || !user.isAdmin) {
+          // Redirect to login if user is not logged in or not admin
+          return <LoginPage />;
+    }
+    console.log(user);
+      return children;
+  };
   return (
     <div className="App">
 
       <Navbar />
       <Routes>
-      <Route path="/addproduct" element={<AddProductPage />} />
+      {/* <Route
+                    path="/addproduct"
+                    element={
+                        <ProtectedAdminRoute>
+                            <AddProductPage />
+                        </ProtectedAdminRoute>
+                    }
+                /> */}
+        <Route
+        path="/addproduct"
+        element={user?.isAdmin ? <AddProductPage /> : <Navigate to="/login" />}
+      />
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

@@ -12,6 +12,7 @@ const getProducts = async (req, res) => {
 
 const createProduct = async (req, res) => {
     const { name, description, price, image, category, countInStock } = req.body;
+
     try {
         // Validate all required fields
         if (!name || !description || !price || !image || !category || !countInStock) {
@@ -55,10 +56,13 @@ const getProductById = async (req, res) => {
 const deleteProduct = async (req, res) => {
     try {
         console.log('Delete request received for product ID:', req.params.id);
+        console.log('Authenticated User:', req.user); // Log user making the request
+
         const product = await Product.findById(req.params.id);
 
         if (product) {
             await Product.deleteOne({ _id: req.params.id });
+            console.log('Product removed successfully');
             res.json({ message: 'Product removed' });
         } else {
             res.status(404).json({ message: 'Product not found' });

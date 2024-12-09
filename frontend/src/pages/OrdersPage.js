@@ -22,23 +22,30 @@ function OrdersPage() {
         };
         fetchOrders();
     }, [user]);
-
     return (
         <div className="orders-page">
             <h2>Your Orders</h2>
             {orders.length > 0 ? (
                 orders.map(order => (
-                    <div key={order._id} className="order">
-                        <h3>Order ID: {order._id}</h3>
+                    <div key={order._id} className="order-card">
+                        <div className="order-header">
+                            <h3>Order ID: {order._id}</h3>
+                            <span className="order-date">{new Date(order.createdAt).toLocaleDateString()}</span>
+                        </div>
                         {order.products.map(product => (
                             <div key={product._id} className="order-product">
                                 <img src={product.productId.image} alt={product.name} />
-                                <h4>{product.name}</h4>
-                                <p>Quantity: {product.quantity}</p>
-                                <p>Price: ₹{product.price}</p>
+                                <div className="order-product-info">
+                                    <h4>{product.name}</h4>
+                                    <p>Quantity: {product.quantity}</p>
+                                    <p>Price: ₹{product.price}</p>
+                                </div>
                             </div>
                         ))}
-                        <p className="total-price">Total Price: ₹{order.totalPrice}</p>
+                        <div className="order-footer">
+                            <p className="total-price">Total Price: ₹{order.totalPrice}</p>
+                            {/* <button className="view-details-btn">View Details</button> */}
+                        </div>
                     </div>
                 ))
             ) : (

@@ -1,110 +1,11 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import { useParams } from 'react-router-dom';
-// import { useUserContext } from '../context/UserContext';
-// import { useWishlistContext } from '../context/WishlistContext';
-// import '../style/ProductPage.css';
 
-// function ProductPage() {
-//     const { id } = useParams();
-//     const [product, setProduct] = useState(null);
-//     const [quantity, setQuantity] = useState(1);
-//     const [relatedProducts, setRelatedProducts] = useState([]);
-//     const { user } = useUserContext();
-//     // const { wishlist, addToWishlist, removeFromWishlist } = useWishlistContext();
-
-//     useEffect(() => {
-//         const fetchProduct = async () => {
-//             try {
-//                 const { data } = await axios.get(`http://localhost:5000/api/products/${id}`);
-//                 setProduct(data);
-//             } catch (error) {
-//                 console.error('Failed to fetch product', error);
-//             }
-//         };
-
-//         const fetchRelatedProducts = async () => {
-//             try {
-//                 const { data } = await axios.get(`http://localhost:5000/api/products/related/${id}`);
-//                 setRelatedProducts(data);
-//             } catch (error) {
-//                 console.error('Failed to fetch related products', error);
-//             }
-//         };
-
-//         fetchProduct();
-//         fetchRelatedProducts();
-//     }, [id]);
-
-//     const addToCart = async () => {
-//         try {
-//             if (!user || !user.token) {
-//                 console.error('User token not available');
-//                 return;
-//             }
-
-//             if (quantity > product.countInStock) {
-//                 alert(`Only ${product.countInStock} units of this product are available`);
-//                 return;
-//             }
-
-//             await axios.post('http://localhost:5000/api/cart', { productId: product._id, quantity }, {
-//                 headers: {
-//                     Authorization: `Bearer ${user.token}`,
-//                 },
-//             });
-//             alert('Product added to cart');
-//         } catch (error) {
-//             console.error('Failed to add product to cart', error);
-//         }
-//     };
-    
-
-//     // const isInWishlist = wishlist && wishlist.length > 0 && wishlist.some(item => item._id === product._id);
-
-//     return (
-//         <div className="product-page">
-//             {product && (
-//                 <>
-//                     <img src={product.image} alt={product.name} />
-//                     <h3>{product.name}</h3>
-//                     <p>{product.description}</p>
-//                     <p>₹{product.price}</p>
-//                     <p>Available Quantity: {product.countInStock}</p>
-//                     <input
-//                         type="number"
-//                         value={quantity}
-//                         onChange={(e) => setQuantity(Number(e.target.value))}
-//                         min="1"
-//                         max={product.countInStock} />
-//                     <button onClick={addToCart}>Add to Cart</button>
-                
-                 
-
-//                     <h2>Related Products</h2>
-//                     <div className="related-products">
-//                         {relatedProducts.map(related => (
-//                             <div key={related._id}>
-//                                 <h3>{related.name}</h3>
-//                                 <img src={related.image} alt={related.name} />
-//                                 <p>Price: ₹{related.price}</p>
-//                             </div>
-//                         ))}
-//                     </div>
-//                 </>
-//             )}
-//         </div>
-//     );
-// }
-
-// export default ProductPage;
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
 // import { useWishlistContext } from '../context/WishlistContext'; // Uncomment if needed
 import '../style/ProductPage.css';
-
+import { Link } from 'react-router-dom';
 function ProductPage() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
@@ -162,14 +63,14 @@ function ProductPage() {
     // const isInWishlist = wishlist && wishlist.length > 0 && wishlist.some(item => item._id === product._id); // Uncomment if needed
 
     return (
-        <div className="container mx-auto p-6">
+        <div className="container mx-auto p-6 mt-20">
             {product && (
                 <div className="flex flex-col lg:flex-row items-start bg-white shadow-lg rounded-lg overflow-hidden">
                     <img src={product.image} alt={product.name} className="w-full lg:w-1/2 h-96 object-cover" />
                     <div className="p-6 lg:w-1/2 flex flex-col justify-between">
-                        <h3 className="text-2xl font-bold text-gray-800">{product.name}</h3>
+                        <h3 className="text-3xl font-bold text-gray-800">{product.name}</h3>
                         <p className="text-gray-600 mt-2">{product.description}</p>
-                        <p className="text-xl font-semibold text-gray-800 mt-4">₹{product.price}</p>
+                        <p className="text-2xl font-semibold text-gray-800 mt-4">₹{product.price}</p>
                         <p className="text-gray-600 mt-2">Available Quantity: {product.countInStock}</p>
                         <div className="mt-4 flex items-center">
                             <input
@@ -180,7 +81,7 @@ function ProductPage() {
                                 max={product.countInStock}
                                 className="border border-gray-300 rounded-md p-2 w-16"
                             />
-                            <button onClick={addToCart} className="ml-4 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition">
+                            <button onClick={addToCart} className="ml-4 bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 transition">
                                 Add to Cart
                             </button>
                         </div>
@@ -196,12 +97,16 @@ function ProductPage() {
                         <div className="p-4">
                             <h3 className="text-lg font-semibold text-gray-800">{related.name}</h3>
                             <p className="text-blue-600 font-bold mt-2">₹{related.price}</p>
+                            {/* <button >
+                                View Product
+                            </button> */}
+                            <Link to={`/product/${product._id}`} className="mt-2 bg-teal-600 text-white py-1 px-2 rounded-md hover:bg-teal-700 transition" >View Product</Link> 
+
                         </div>
-                    </div>
+                    </ div>
                 ))}
             </div>
         </div>
     );
 }
-
 export default ProductPage;

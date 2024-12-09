@@ -1,4 +1,4 @@
- import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
 import ProfilePage from '../pages/ProfilePage';
@@ -18,12 +18,12 @@ function Navbar() {
     };
 
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${isMenuOpen ? 'navbar-open' : ''}`}>
             <div className="navbar-logo">
                 <Link to="/">StyleSphere</Link>
             </div>
             <button 
-                className="navbar-toggle" 
+                className={`navbar-toggle ${isMenuOpen ? 'active' : ''}`} 
                 onClick={toggleMenu}
             >
                 &#9776; {/* Hamburger icon */}

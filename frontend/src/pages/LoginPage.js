@@ -16,10 +16,16 @@ function LoginPage() {
             setUser({
                 username: userData.name,
                 email: userData.email,
-                token: userData.token
+                token: userData.token,
+                isAdmin: userData.isAdmin,
             });
+            if (response.data.isAdmin) {
+                window.location.href = '/addproduct';
+            }
             // Redirect or navigate to the home page after successful login
-            window.location.href = '/';
+            else {
+                window.location.href = '/';
+            }
         } catch (error) {
             console.error('Invalid login credentials');
         }

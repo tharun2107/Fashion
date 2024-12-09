@@ -7,7 +7,9 @@ const protect = async (req, res, next) => {
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         try {
             token = req.headers.authorization.split(' ')[1];
+            console.log('Extracted Token:', token); // Log token
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            console.log('Decoded Payload:', decoded); // Log decoded payload
             req.user = await User.findById(decoded.id).select('-password');
 
             if (!req.user) {
@@ -26,5 +28,13 @@ const protect = async (req, res, next) => {
     }
 };
 
+// Middleware to check if the user is an admin
+const adminMiddleware = async (req, res, next) => {
+    if (req.user && req.user.isAdmin) {
+        next();
+    } else {
+        return res.status(403).json({ message: 'Access Denied. Admin only.' });
+    }
+};
 
-module.exports = { protect };
+module.exports = { protect,adminMiddleware };
