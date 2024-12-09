@@ -48,7 +48,7 @@ const HomePage = () => {
           <div className="hero-overlay">
             <h1>Style That Speaks</h1>
             <p>Explore the finest collection of men's fashion for every occasion.</p>
-            <button className="shop-now-btn">Shop Now</button>
+            <Link to="/mensfashion"><button className="shop-now-btn">Shop Now</button></Link>
           </div>
         </section>
   
@@ -56,16 +56,16 @@ const HomePage = () => {
       <h2 className="shop-category-title">Shop By Category</h2>
       <div className="shop-category-container">
         <div className="category-item" style={{ backgroundImage: 'url(https://static.wixstatic.com/media/c837a6_e4039f612bfc443eb0d8dc72af0e4e18~mv2.jpg/v1/fill/w_450,h_620,fp_0.59_0.22,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/templatesdrive_30_yo_queer_man_wearing_buttoned_down_and_tailor_2331728c-3e86-463f-8d68-f9.jpg)' }}>
-          <button className="category-button">SHIRTS</button>
+        <Link to="/mensfashion"><button className="category-button">SHIRTS</button></Link>
         </div>
         <div className="category-item" style={{ backgroundImage: 'url(https://static.wixstatic.com/media/c837a6_87e15407f0e246a690f9d907ffcd3cb2~mv2.jpg/v1/fill/w_450,h_620,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/mayagi_fashoin_shot_of_a_man_wearing_a_Coastal_Linen_pants__The_5ea32b6b-a0a6-4268-9bc2-76.jpg)' }}>
-          <button className="category-button">PANTS</button>
+        <Link to="/mensfashion"><button className="category-button">PANTS</button></Link>
         </div>
         <div className="category-item" style={{ backgroundImage: 'url(https://static.wixstatic.com/media/84770f_4f89d3118543426e8f96037dfbb94c9b~mv2.jpg/v1/fill/w_450,h_620,fp_0.56_0.24,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/02_mayagi_a_25_yo_queer_man_standing_in_a_sunlit_old_city_in_italy_65b19b1a-9d5f-4454-9462.jpg)' }}>
-          <button className="category-button">JACKETS</button>
+        <Link to="/mensfashion"><button className="category-button">JACKETS</button></Link>
         </div>
         <div className="category-item" style={{ backgroundImage: 'url(https://static.wixstatic.com/media/84770f_b87c0ee0b94f49e78838c5d3745df44e~mv2.jpg/v1/fill/w_450,h_620,fp_0.49_0.22,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/mayagi_long_shot_of_a_german_man_wearing_a_jeans_jacket__he_als_1b7108bd-8e5c-4589-9165-eb.jpg)' }}>
-          <button className="category-button">DENIM</button>
+        <Link to="/mensfashion"> <button className="category-button">DENIM</button></Link>
         </div>
       </div>
     </section>

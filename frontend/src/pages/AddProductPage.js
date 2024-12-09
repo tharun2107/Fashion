@@ -174,6 +174,7 @@ const AddProductPage = () => {
                     {products.map((product) => (
                         <li key={product._id} className="flex justify-between items-center p-4 border-b border-gray-300">
                             <div>
+                                <div><img src={product.image} width={100} />    </div>
                                 <strong className="text-gray-800">{product.name}</strong> - ₹{product.price}
                                 <p className="text-sm text-gray-600">{product.description}</p>
                             </div>
