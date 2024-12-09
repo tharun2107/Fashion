@@ -9,10 +9,9 @@ const app = express();
 
 
 app.use(cors({
-    origin: [
-        'http://localhost:3000', // Local development frontend
+    origin: 
         'https://styleesphere.netlify.app/' // Deployed frontend domain
-    ],
+    ,
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
     credentials: true, // Allow cookies and credentials
 }));
